@@ -20,8 +20,16 @@ class Mansione extends Dipendente {
 
     public function salario($_oreLavorative) {
 
+        if ($this->ruolo == 'Direttore') {
+            $maggiorazioneOraria = 1.8;
+        } else if ($this->ruolo == 'Vice_direttore') {
+            $maggiorazioneOraria = 1.4;
+        } else {
+            $maggiorazioneOraria = 1;
+        }
+
         if (is_int($_oreLavorative) || !empty($_oreLavorative)) {
-            return $this->retribuzioneOraria * $_oreLavorative;
+            return $this->retribuzioneOraria * $_oreLavorative * $maggiorazioneOraria;
         } else {
             die('Valore non corretto');
         }

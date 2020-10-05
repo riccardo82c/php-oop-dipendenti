@@ -2,11 +2,17 @@
 Aggiungete 1 trait a piacere -->
 <?php
 
+// includo (una volta) Dipendente e Mansione
+
 require_once 'classes/Dipendente.php';
 require_once 'classes/Mansione.php';
 
+// creazione dipendenti con Costruttore
+
 $primoDipendente = new Mansione('Riccardo', 'Colombo', '0001', 'Direttore');
 $secondoDipendente = new Mansione('Giovanni', 'Airoldi', '0002', 'Vice_direttore');
+
+// modifica alcuni valori
 
 $primoDipendente->setNome('Davide');
 
@@ -15,11 +21,22 @@ $secondoDipendente->setCognome('Gervasoni');
 var_dump($primoDipendente);
 var_dump($secondoDipendente);
 
-/* $primoDipSalario = $primoDipendente->salario(''); */
+// stampa salari in base alle ore e alla maggiorazioneOraria (definita nel metodo salario)
 
-/* var_dump($primoDipSalario); */
+$primoDipSalario = $primoDipendente->salario(10);
 
-/* check credenziali */
+var_dump($primoDipSalario);
 
-$primoDipendente->setCredenziali('dd', 'admin');
+$secondoDipSalario = $secondoDipendente->salario(10);
+
+var_dump($secondoDipSalario);
+
+/* set e check credenziali */
+
+$primoDipendente->setCredenziali('admin', 'admin');
 echo $primoDipendente->checkLogin(['admin', 'admin']);
+
+echo '<br>';
+
+$secondoDipendente->setCredenziali('gioair', '1997');
+echo $primoDipendente->checkLogin(['gioair', '1998']);
