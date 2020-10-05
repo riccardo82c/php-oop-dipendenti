@@ -14,3 +14,11 @@ $secondoDipendente->setCognome('Gervasoni');
 
 var_dump($primoDipendente);
 var_dump($secondoDipendente);
+
+/* $primoDipSalario = $primoDipendente->salario(''); */
+
+/* var_dump($primoDipSalario); */
+
+/* check credenziali */
+
+echo $primoDipendente->checkLogin(['admin', 'admin']);
