@@ -21,4 +21,5 @@ var_dump($secondoDipendente);
 
 /* check credenziali */
 
+$primoDipendente->setCredenziali('dd', 'admin');
 echo $primoDipendente->checkLogin(['admin', 'admin']);
