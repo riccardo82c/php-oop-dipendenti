@@ -18,6 +18,11 @@ $primoDipendente->setNome('Davide');
 
 $secondoDipendente->setCognome('Gervasoni');
 
+// setDataCreazione profilo
+
+$primoDipendente->setDataCreazione('05-10-2020');
+$secondoDipendente->setDataCreazione('05-10-2020');
+
 var_dump($primoDipendente);
 var_dump($secondoDipendente);
 
@@ -33,10 +38,12 @@ var_dump($secondoDipSalario);
 
 /* set e check credenziali */
 
+// prova accesso consentito
 $primoDipendente->setCredenziali('admin', 'admin');
 echo $primoDipendente->checkLogin(['admin', 'admin']);
 
 echo '<br>';
 
+// prova accesso negato
 $secondoDipendente->setCredenziali('gioair', '1997');
 echo $primoDipendente->checkLogin(['gioair', '1998']);
