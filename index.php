@@ -9,32 +9,58 @@ require_once 'classes/Mansione.php';
 
 // creazione dipendenti con Costruttore
 
-$primoDipendente = new Mansione('Riccardo', 'Colombo', '0001', 'Direttore');
-$secondoDipendente = new Mansione('Giovanni', 'Airoldi', '0002', 'Vice_direttore');
+try {
+    $primoDipendente = new Mansione('Riccardo', 'Colombo', '0001', 'Direttore');
+} catch (Exception $e) {
+    echo 'Trovata eccezione => ' . $e->getMessage();
+}
+
+try {
+    $secondoDipendente = new Mansione('Giovanni', 'Airoldi', '0002', 'Vice_direttore');
+} catch (Exception $e) {
+    echo 'Trovata eccezione => ' . $e->getMessage();
+}
 
 // modifica alcuni valori
+try {
+    $primoDipendente->setNome('Davide');
+} catch (Exception $e) {
+    echo 'Trovata eccezione => ' . $e->getMessage();
+}
 
-$primoDipendente->setNome('Davide');
-
-$secondoDipendente->setCognome('Gervasoni');
+try {
+    $secondoDipendente->setCognome('Gervasoni');
+} catch (Exception $e) {
+    echo 'Trovata eccezione => ' . $e->getMessage();
+}
 
 // setDataCreazione profilo
 
 $primoDipendente->setDataCreazione('05-10-2020');
 $secondoDipendente->setDataCreazione('05-10-2020');
 
-var_dump($primoDipendente);
-var_dump($secondoDipendente);
+echo $primoDipendente;
+echo '<br>';
+echo '<br>';
+echo $secondoDipendente;
+/* var_dump($primoDipendente);
+var_dump($secondoDipendente); */
 
 // stampa salari in base alle ore e alla maggiorazioneOraria (definita nel metodo salario)
 
-$primoDipSalario = $primoDipendente->salario(10);
+try {
+    $primoDipSalario = $primoDipendente->salario(8);
+    var_dump($primoDipSalario);
+} catch (Exception $e) {
+    echo 'Trovata eccezione => ' . $e->getMessage();
+}
 
-var_dump($primoDipSalario);
-
-$secondoDipSalario = $secondoDipendente->salario(10);
-
-var_dump($secondoDipSalario);
+try {
+    $secondoDipSalario = $secondoDipendente->salario(10);
+    var_dump($secondoDipSalario);
+} catch (Exception $e) {
+    echo 'Trovata eccezione => ' . $e->getMessage();
+}
 
 /* set e check credenziali */
 

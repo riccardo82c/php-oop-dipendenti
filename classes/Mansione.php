@@ -27,10 +27,10 @@ class Mansione extends Dipendente {
             $maggiorazioneOraria = 1;
         }
 
-        if (is_int($_oreLavorative) || !empty($_oreLavorative)) {
+        if (is_int($_oreLavorative) && !empty($_oreLavorative)) {
             return $this->retribuzioneOraria * $_oreLavorative * $maggiorazioneOraria;
         } else {
-            die('Valore non corretto');
+            throw new Exception('Numero ore non inserito correttamente <br>');
         }
 
     }
@@ -38,6 +38,10 @@ class Mansione extends Dipendente {
     /* metodo setDataCreazione serve per inserire la data di creazione del profilo */
     public function setDataCreazione($_dataCreazione) {
         $this->dataCreazione = $_dataCreazione;
+    }
+
+    public function __toString() {
+        return parent::__toString() . '<br> Ruolo: ' . $this->ruolo;
     }
 
 }
